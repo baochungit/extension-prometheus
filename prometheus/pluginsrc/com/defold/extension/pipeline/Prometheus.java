@@ -134,8 +134,6 @@ public class Prometheus implements ILuaObfuscator {
 	@Override
 	public String obfuscate(String input, String path, String buildVariant) throws Exception {
 		try {
-			logger.info("Obfuscating " + path);
-
 			File projectRoot = getProjectRoot(path);
 			if (projectRoot == null) {
 				throw new Exception("Unable to find project root for " + path);
@@ -143,9 +141,10 @@ public class Prometheus implements ILuaObfuscator {
 
 			File configFile = new File(projectRoot, "prometheus.lua");
 			if (!configFile.exists()) {
-				logger.info("- Skipped by no prometheus.lua file found.");
 				return input;
 			}
+
+			logger.info("Obfuscating " + path);
 
 			Bob.initLua();
 			unpackPrometheusSource();
