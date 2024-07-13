@@ -141,12 +141,17 @@ public class Prometheus implements ILuaObfuscator {
 				throw new Exception("Unable to find project root for " + path);
 			}
 
+			File configFile = new File(projectRoot, "prometheus.lua");
+			if (!configFile.exists()) {
+				logger.info("- Skipped by no prometheus.lua file found.");
+				return input;
+			}
+
 			Bob.initLua();
 			unpackPrometheusSource();
 
 			File inputFile = writeToTempFile(input);
 			File outputFile = createTempFile();
-			File configFile = new File(projectRoot, "prometheus.lua");
 
 			// command line arguments to launch prometheus
 			List<String> options = new ArrayList<String>();
