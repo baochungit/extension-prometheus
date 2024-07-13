@@ -147,7 +147,7 @@ public class Prometheus implements ILuaObfuscator {
 				return input;
 			}
 
-			Bob.initLua();
+			/*Bob.initLua();
 			unpackPrometheusSource();
 
 			File inputFile = writeToTempFile(input);
@@ -182,7 +182,7 @@ public class Prometheus implements ILuaObfuscator {
 			}
 			String o = readFile(outputFile);
 			// logger.info(o);
-			return o;
+			return o;*/
 		}
 		catch(Exception e) {
 			e.printStackTrace();
