@@ -142,12 +142,12 @@ public class Prometheus implements ILuaObfuscator {
 			}
 
 			File configFile = new File(projectRoot, "prometheus.lua");
-			if (configFile.notExists()) {
+			if (!configFile.exists()) {
 				logger.info("- Skipped by no prometheus.lua file found.");
 				return input;
 			}
 
-			/*Bob.initLua();
+			Bob.initLua();
 			unpackPrometheusSource();
 
 			File inputFile = writeToTempFile(input);
@@ -182,7 +182,7 @@ public class Prometheus implements ILuaObfuscator {
 			}
 			String o = readFile(outputFile);
 			// logger.info(o);
-			return o;*/
+			return o;
 		}
 		catch(Exception e) {
 			e.printStackTrace();

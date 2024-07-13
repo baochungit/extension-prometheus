@@ -1,0 +1,1 @@
+java -jar bob.jar --debug --platform=x86_64-win32 --verbose --build-artifacts=plugins clean build
